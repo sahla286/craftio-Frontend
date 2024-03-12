@@ -1,5 +1,4 @@
 import React, { createContext, useEffect, useState } from "react";
-// import all_product from "../Components/Assets/all_product"
 
 export const ShopContext = createContext(null);
 
@@ -39,17 +38,35 @@ const ShopContextProvider = (props) => {
 
 }, [])
   
+  // const getTotalCartAmount = () => {
+  //   let totalAmount = 0;
+  //   for (const item in cartItems) {
+  //     if (cartItems[item] > 0) {
+  //       let itemInfo = products.find((product) => product.id === Number(item));
+  //       totalAmount += cartItems[item] * itemInfo.new_price;
+  //     }
+  //   }
+  //   return totalAmount;
+  // };
+
+
+
+
   const getTotalCartAmount = () => {
     let totalAmount = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
         let itemInfo = products.find((product) => product.id === Number(item));
-        totalAmount += cartItems[item] * itemInfo.new_price;
+        if (itemInfo) {
+          totalAmount += cartItems[item] * itemInfo.new_price;
+        } else {
+          console.error(`Product with id ${item} not found.`);
+        }
       }
     }
     return totalAmount;
   };
-
+  
   const getTotalCartItems = () => {
     let totalItem = 0;
     for (const item in cartItems) {
@@ -78,6 +95,9 @@ const ShopContextProvider = (props) => {
     }
   };
 
+
+
+
   const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     if(localStorage.getItem("auth-token"))
@@ -96,7 +116,18 @@ const ShopContextProvider = (props) => {
     }
   };
 
-  const contextValue = {products, getTotalCartItems, cartItems, addToCart, removeFromCart, getTotalCartAmount };
+  const searchProducts = (query) => {
+
+    const filteredProducts = products.filter(product => {
+      const productName = product.name ? product.name.toLowerCase() : '';
+      return productName.includes(query.toLowerCase());
+    });
+    setProducts(filteredProducts);
+  };
+  const clearCartItems = () => {
+    setCartItems(getDefaultCart());
+  };
+  const contextValue = {products, getTotalCartItems, cartItems, addToCart, removeFromCart, getTotalCartAmount,searchProducts, clearCartItems};
   return (
     <ShopContext.Provider value={contextValue}>
       {props.children}

@@ -24,8 +24,6 @@ const ShopCategory = (props) => {
                 return <Item id={item.id} 
                 key={i} name={item.name} 
                 image={item.image}  
-                // rating={item.rating} 
-                // numReviews={item.numReviews}
                 new_price={item.new_price} 
                 old_price={item.old_price} 
                />;

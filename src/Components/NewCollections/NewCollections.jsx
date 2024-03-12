@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import './NewCollections.css'
-// import new_collections from '../Assets/new_collections'
 import Item from '../Item/Item'
 
 const NewCollections = () => {
@@ -24,4 +23,4 @@ const NewCollections = () => {
   )
 }
 
-export default NewCollections
+export default NewCollections;

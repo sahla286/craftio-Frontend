@@ -1,62 +1,25 @@
-// import React from 'react'
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 
-// const Rating = ({value,text}) => 
-// {
-//   return (
-//     <div className='rating'>
-//         <span style={{color:"gold"}}>
-//              <i className={
-//                 value >= 1
-//                 ? 'fas fa-star' 
-//                 : value >= 0.5 
-//                 ? 'fas fa-star-half-alt' 
-//                 : 'far fa-star' 
-//                 }>
-//             </i> 
-//         </span>
-//         <span style={{color:"gold"}}>
-//              <i className={
-//                 value >= 2
-//                 ? 'fas fa-star' 
-//                 : value >= 1.5 
-//                 ? 'fas fa-star-half-alt' 
-//                 : 'far fa-star' 
-//                 }>
-//             </i> 
-//         </span>
-//         <span style={{color:"gold"}}>
-//              <i className={
-//                 value >= 3
-//                 ? 'fas fa-star' 
-//                 : value >= 2.5 
-//                 ? 'fas fa-star-half-alt' 
-//                 : 'far fa-star' 
-//                 }>
-//             </i> 
-//         </span>
-//         <span style={{color:"gold"}}>
-//              <i className={
-//                 value >= 4
-//                 ? 'fas fa-star' 
-//                 : value >= 3.5 
-//                 ? 'fas fa-star-half-alt' 
-//                 : 'far fa-star' 
-//                 }>
-//             </i> 
-//         </span>
-//         <span style={{color:"gold"}}>
-//              <i className={
-//                 value >= 5
-//                 ? 'fas fa-star' 
-//                 : value >= 4.5 
-//                 ? 'fas fa-star-half-alt' 
-//                 : 'far fa-star' 
-//                 }>
-//             </i> 
-//         </span>
-//         <span>{text && text}</span>
-//     </div>
-//   )
-// }
+const Rating = ({ value, text }) => {
+  const stars = [];
+  
+  for (let i = 1; i <= 5; i++) {
+    if (value >= i) {
+      stars.push(<FontAwesomeIcon key={i} icon={faStar} style={{ color: 'gold' }} />);
+    } else if (value >= i - 0.5) {
+      stars.push(<FontAwesomeIcon key={i} icon={faStarHalf} style={{ color: 'gold' }} />);}
+       else {
+      stars.push(<FontAwesomeIcon key={i} icon={faStar} style={{ color: 'white' }} />);
+    }
+  }
+  return (
+    <div className='rating'>
+      {stars}
+      {/* <span>{text && text}</span> */}
+    </div>
+  );
+};
 
-// export default Rating
+export default Rating;

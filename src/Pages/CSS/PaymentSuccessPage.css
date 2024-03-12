@@ -1,0 +1,58 @@
+.payment-success-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .tick-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+  
+  .tick {
+    font-size: 80px;
+    color: transparent;
+    animation: tickScale 0.5s ease-in-out forwards, tickColor 1s ease-in-out forwards;
+  }
+  
+  @keyframes tickScale {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes tickColor {
+    0% {
+      color: transparent;
+    }
+    100% {
+      color: #5cb85c;
+    }
+  }
+  
+  
+  .success-message {
+    font-size: 36px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .thank-you-message {
+    font-size: 18px;
+    color: #666;
+    text-align: center;
+  }
+  

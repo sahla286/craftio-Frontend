@@ -6,7 +6,7 @@ import pintrest_icon from '../Assets/pintester_icon.png'
 import whatsapp_icon from '../Assets/whatsapp_icon.png'
 
 const Footer = () => {
-  const date=new Date()
+  const date=new Date();
   const year=date.getFullYear();
   return (
     <div className='footer'>
